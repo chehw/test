@@ -132,18 +132,19 @@ static void * worker_thread(void * param)
 		
 	}
 	
-	average = total / founds;
+	if(founds)
+		average = total / founds;
 	
 	double percent = 0;
-	uint64_t deadline_days = DEAD_LINE; // 180天
+	//~ uint64_t deadline_days = DEAD_LINE; // 180天
 	
-	int count = 0;
-	for(i = 0; i < TEST_ROUNDS; ++i)
-	{
-		if((found_at[i] != -1) && (found_at[i] <= deadline_days)) ++count;
-	}
+	//~ int count = 0;
+	//~ for(i = 0; i < TEST_ROUNDS; ++i)
+	//~ {
+		//~ if((found_at[i] != -1) && (found_at[i] <= deadline_days)) ++count;
+	//~ }
 	
-	percent = (double)count / (double)TEST_ROUNDS;
+	percent = (double)founds / (double)TEST_ROUNDS;
 	
 	
 	
