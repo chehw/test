@@ -74,7 +74,7 @@ static uint64_t mining(stat_window_t * st, uint64_t start_pos)
 		st->count -= st->version[st->pos];
 		support = rand() % 1000;		
 		
-		st->version[st->pos] = (support <= st->support)?1:0;
+		st->version[st->pos] = (support < st->support)?1:0;
 		st->count += st->version[st->pos++];		
 		if(st->pos == WINDOW_SIZE) st->pos = 0;
 		
