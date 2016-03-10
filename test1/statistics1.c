@@ -66,11 +66,16 @@ static uint64_t mining(stat_window_t * st, uint64_t start_pos)
 	unsigned short support;
 	while(!quit)
 	{
-		if(i == UINT64_MAX) 
+		if(i >= DEAD_LINE)
 		{
-			fprintf(stderr, "integer overflow\n");
-			break;
+			return -1;
 		}
+		//~ 
+		//~ if(i == UINT64_MAX) 
+		//~ {
+			//~ fprintf(stderr, "integer overflow\n");
+			//~ break;
+		//~ }
 		
 		st->count -= st->version[st->pos];
 		support = rand() % 1000;		
@@ -81,10 +86,6 @@ static uint64_t mining(stat_window_t * st, uint64_t start_pos)
 		
 		if(st->count >= st->threshold) break;
 		
-		if(i > DEAD_LINE)
-		{
-			return -1;
-		}
 		
 		++i;
 		//~ if((i % 1000) == 0)
