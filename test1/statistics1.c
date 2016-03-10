@@ -133,7 +133,7 @@ static void * worker_thread(void * param)
 	average = total / i;
 	
 	double percent = 0;
-	uint64_t deadline_days = 144 * 180; // 180天
+	uint64_t deadline_days = DEAD_LINE; // 180天
 	int count = 0;
 	for(i = 0; i < TEST_ROUNDS; ++i)
 	{
