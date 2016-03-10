@@ -108,6 +108,7 @@ static void * worker_thread(void * param)
 	int i;
 	uint64_t found;
 	uint64_t min = UINT64_MAX, max = 0, total = 0, average = 0;
+	int founds = 0;
 	
 	for(i = 0; (i < TEST_ROUNDS) && !quit; ++i)
 	{
@@ -120,8 +121,9 @@ static void * worker_thread(void * param)
 		{			
 			if(found <= min) min = found;
 			if(found >= max) max = found;
-			printf("found at pos: %ld\n", found);
+			//~ printf("found at pos: %ld\n", found);
 			total += found;
+			++founds;
 		}
 		
 		
@@ -130,10 +132,11 @@ static void * worker_thread(void * param)
 		
 	}
 	
-	average = total / i;
+	average = total / founds;
 	
 	double percent = 0;
 	uint64_t deadline_days = DEAD_LINE; // 180天
+	
 	int count = 0;
 	for(i = 0; i < TEST_ROUNDS; ++i)
 	{
