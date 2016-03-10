@@ -8,7 +8,7 @@
 $ ./statistics [预期值] [目标值] > [outputfile]
 
 示例： 
-$ ./statistics 700 750 result.txt
+$ ./statistics 700 750 >> result.txt
 
 
 
