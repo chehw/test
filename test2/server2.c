@@ -72,7 +72,7 @@
 	}while(0)
 #else
 #define debug_printf(fmt, ...) 
-#defing log_printf(fmt, ...)
+#define log_printf(fmt, ...)
 #endif
 
 typedef void (SIGPROC)(int, siginfo_t *, void *);
